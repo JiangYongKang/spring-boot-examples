@@ -33,6 +33,4 @@ public interface SysUserRepository extends BaseRepository<SysUserModel, String> 
     @Override
     @Cacheable(value = "system:user", keyGenerator = "wiselyKeyGenerator")
     List<SysUserModel> findAll();
-
-
 }

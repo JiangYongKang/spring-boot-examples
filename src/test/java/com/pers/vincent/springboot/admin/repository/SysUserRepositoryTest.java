@@ -1,7 +1,6 @@
-package com.pers.vincent.springboot.admin;
+package com.pers.vincent.springboot.admin.repository;
 
 import com.pers.vincent.springboot.admin.domain.SysUserModel;
-import com.pers.vincent.springboot.admin.repository.SysUserRepository;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +13,7 @@ import java.util.List;
 
 /**
  * Created by IDEA.
- * User: e
+ * User: vincent
  * Date: 2017/4/10
  * Comment: 系统用户数据层接口测试类
  */
@@ -37,15 +36,9 @@ public class SysUserRepositoryTest {
     }
 
     @Test
-    public void findOneTest() {
-        SysUserModel result = sysUserRepository.findOne("1");
-        Assert.assertNotNull(result);
-    }
-
-    @Test
     public void findByStatus() {
         List<SysUserModel> results = sysUserRepository.findByStatus(0);
         Assert.assertNotNull(results);
-        Assert.assertEquals(2, results.size());
+        Assert.assertEquals(100, results.size());
     }
 }

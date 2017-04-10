@@ -1,6 +1,5 @@
 package com.pers.vincent.springboot.admin.base;
 
-import com.pers.vincent.springboot.admin.domain.SysUserModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
@@ -9,7 +8,7 @@ import java.util.List;
 
 /**
  * Created by IDEA.
- * User: e
+ * User: vincent
  * Date: 2017/4/10
  * Comment: 数据层基类，定义公共的 CRUD 方法，其余模块的数据持久化层继承该基类。
  * 该基类继承自 JpaRepository 拥有该基类下的全部方法
