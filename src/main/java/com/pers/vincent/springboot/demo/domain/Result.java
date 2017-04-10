@@ -1,11 +1,9 @@
 package com.pers.vincent.springboot.demo.domain;
 
 /**
- * 返回结果类
- * <p>
- * Created by IDEA.
  * User: vincent
- * Date 2017/4/8
+ * Date: 2017/4/8
+ * Comment: 返回结果类
  */
 public class Result {
 
@@ -20,6 +18,11 @@ public class Result {
     private String message;
 
     /**
+     * 请求路径
+     */
+    private String url;
+
+    /**
      * 数据
      */
     private Object data;
@@ -27,9 +30,10 @@ public class Result {
     public Result() {
     }
 
-    public Result(int code, String message, Object data) {
+    public Result(int code, String message, String url, Object data) {
         this.code = code;
         this.message = message;
+        this.url = url;
         this.data = data;
     }
 
@@ -49,6 +53,14 @@ public class Result {
         this.message = message;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
     public Object getData() {
         return data;
     }
@@ -62,6 +74,7 @@ public class Result {
         return "Result{" +
                 "code=" + code +
                 ", message='" + message + '\'' +
+                ", url='" + url + '\'' +
                 ", data=" + data +
                 '}';
     }

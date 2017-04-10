@@ -27,7 +27,7 @@ public class Controller {
     @GetMapping(value = "/result")
     public ModelAndView result(int code, String message) {
         ModelAndView mv = new ModelAndView("/demo/result");
-        mv.addObject("result", new Result(code, message, new Object()));
+        mv.addObject("result", new Result(code, message, "/demo/result", new Object()));
         return mv;
     }
 }

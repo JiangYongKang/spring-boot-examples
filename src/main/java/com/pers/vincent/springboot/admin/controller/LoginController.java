@@ -30,7 +30,7 @@ public class LoginController {
     @GetMapping(value = "/to/login")
     public Object toLogin() {
         logger.info("com.pers.vincent.springboot.admin.controller ==> toLogin()");
-        return new Result(200, "Please", null);
+        return new Result(200, "Please", "/to/login", null);
     }
 
     /**
@@ -48,8 +48,13 @@ public class LoginController {
             user.put("username", username);
             user.put("password", password);
             request.getSession().setAttribute("user", user);
-            return new Result(200, "success", user);
+            return new Result(200, "success", "/to/login", user);
         }
-        return new Result(500, "error", null);
+        return new Result(500, "error", "/to/login", null);
+    }
+
+    @GetMapping(value = "/global/error/test")
+    public void GlobalErrorTest() throws Exception {
+        throw new NullPointerException("java.lang.NullPointerException !!!!!");
     }
 }
