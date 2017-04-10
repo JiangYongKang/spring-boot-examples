@@ -33,6 +33,11 @@ public class SysUserModel implements Serializable {
     private String password;
 
     /**
+     * 状态
+     */
+    private Integer status;
+
+    /**
      * 创建时间
      */
     private Date createTime;
@@ -66,6 +71,14 @@ public class SysUserModel implements Serializable {
         this.password = password;
     }
 
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
     public Date getCreateTime() {
         return createTime;
     }
@@ -88,6 +101,7 @@ public class SysUserModel implements Serializable {
                 "id='" + id + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", status=" + status +
                 ", createTime=" + createTime +
                 ", updateTime=" + updateTime +
                 '}';

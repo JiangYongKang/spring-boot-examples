@@ -1,5 +1,6 @@
 package com.pers.vincent.springboot.admin.repository;
 
+import com.pers.vincent.springboot.admin.base.BaseRepository;
 import com.pers.vincent.springboot.admin.domain.SysUserModel;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -17,7 +18,7 @@ import java.util.List;
  */
 @Transactional
 /* @CacheConfig(cacheNames = "system.user") */
-public interface SysUserRepository extends JpaRepository<SysUserModel, String> {
+public interface SysUserRepository extends BaseRepository<SysUserModel, String> {
 
     /**
      * 查询所有系统管理员，并将结果更新至缓存
@@ -32,4 +33,6 @@ public interface SysUserRepository extends JpaRepository<SysUserModel, String> {
     @Override
     @Cacheable(value = "system:user", keyGenerator = "wiselyKeyGenerator")
     List<SysUserModel> findAll();
+
+
 }
