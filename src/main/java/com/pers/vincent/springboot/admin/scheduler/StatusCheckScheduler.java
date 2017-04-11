@@ -6,6 +6,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * User: vincent
  * Date: 2017/4/11
@@ -22,9 +25,9 @@ public class StatusCheckScheduler {
      * @Scheduled 定义该方法为一个定时器类
      * fixedRate: 执行间隔时间，单位毫秒
      */
-    @Scheduled(fixedRate = 1000)
+    @Scheduled(fixedRate = 60000)
     public void tasks() {
-        logger.info("调度任务 >>> [tasks] >>> 第[" + count++ + "]次执行 ... ");
+        logger.info(String.format(">>> 定时任务[tasks] >>> 第[%s]次执行", count++));
     }
 
 }

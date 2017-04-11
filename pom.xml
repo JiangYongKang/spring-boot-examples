@@ -63,6 +63,13 @@
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
 
+        <!-- druid -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.18</version>
+        </dependency>
+
         <!-- thymeleaf 模板（官方推荐） -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
