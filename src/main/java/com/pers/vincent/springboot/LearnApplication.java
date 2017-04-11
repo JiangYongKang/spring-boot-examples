@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,18 +19,21 @@ import javax.annotation.Resource;
  * User: vincent
  * Date 2017/4/8
  *
- * @SpringBootApplication 启动类的注解
  * @EnableCaching 开启缓存
  * @RestController restful 控制层注解，相当于 @Controller + @ResponseBody，该类下的所有接口都将返回 JSON 格式的数据
- * @EnableConfigurationProperties 加载配置文件管理的
+ * @EnableScheduling 定时任务注解
+ * @SpringBootApplication 启动类的注解
  * @RequestMapping 请求地址映射
+ * @EnableConfigurationProperties 加载配置文件管理的
  */
 
-@SpringBootApplication
+
 @EnableCaching
 @RestController
-@EnableConfigurationProperties({PropertiesConfig.class})
+@EnableScheduling
+@SpringBootApplication
 @RequestMapping(value = "/admin")
+@EnableConfigurationProperties({PropertiesConfig.class})
 public class LearnApplication {
 
     @Resource
