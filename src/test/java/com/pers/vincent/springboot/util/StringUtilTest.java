@@ -40,6 +40,37 @@ public class StringUtilTest {
     }
 
     @Test
+    public void isEqualsTest() {
+        String s1 = "s1";
+        String s2 = "s2";
+        Assert.assertFalse(StringUtil.isEquals(s1, s2));
+    }
+
+    @Test
+    public void isNumberTest() {
+        String s = "123";
+        Assert.assertTrue(StringUtil.isNumber(s));
+    }
+
+    @Test
+    public void parseShortTest() {
+        String s = "123";
+        Assert.assertNotNull(StringUtil.parseShort(s));
+    }
+
+    @Test
+    public void parseIntTest() {
+        String s = "123";
+        Assert.assertNotNull(StringUtil.parseInteger(s));
+    }
+
+    @Test
+    public void parseLongTest() {
+        String s = "123";
+        Assert.assertNotNull(StringUtil.parseLong(s));
+    }
+
+    @Test
     public void randomUUID() {
         Assert.assertNotNull(StringUtil.randomUUID());
     }

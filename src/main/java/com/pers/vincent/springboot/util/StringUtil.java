@@ -2,6 +2,7 @@ package com.pers.vincent.springboot.util;
 
 import java.io.UnsupportedEncodingException;
 import java.util.UUID;
+import java.util.regex.Pattern;
 
 /**
  * User: vincent
@@ -11,6 +12,12 @@ import java.util.UUID;
 public class StringUtil {
 
     private static final String CHARSET_NAME = "UTF-8";
+
+    private static final Pattern NUMBER_PATTERN = Pattern.compile("^\\d+$");
+
+    public static final String[] EMPTY_STRING_ARRAY = new String[0];
+
+    public static final Pattern SPLIT_PATTERN = Pattern.compile("\\s*[,]+\\s*");
 
     /**
      * 判断是否不为空
@@ -30,6 +37,61 @@ public class StringUtil {
      */
     public static boolean isNull(String s) {
         return s == null || s.trim().equals("");
+    }
+
+    /**
+     * 判断字符串是否相等
+     *
+     * @param s1
+     * @param s2
+     * @return 都为空的情况下也按相等计算
+     */
+    public static boolean isEquals(String s1, String s2) {
+        if (s1 == null && s2 == null)
+            return true;
+        if (s1 == null || s2 == null)
+            return false;
+        return s1.equals(s2);
+    }
+
+    /**
+     * 判断字符串是否为数字
+     *
+     * @param s
+     * @return 是数字返回 true，否则返回 false
+     */
+    public static boolean isNumber(String s) {
+        return isNotNull(s) && NUMBER_PATTERN.matcher(s).matches();
+    }
+
+    /**
+     * 字符串转换 Short 类型
+     *
+     * @param s
+     * @return 不是数字返回 0
+     */
+    public static Short parseShort(String s) {
+        return isNumber(s) ? Short.parseShort(s) : 0;
+    }
+
+    /**
+     * 字符串转换 Integer 类型
+     *
+     * @param s
+     * @return 不是数字返回 0
+     */
+    public static Integer parseInteger(String s) {
+        return isNumber(s) ? Integer.parseInt(s) : 0;
+    }
+
+    /**
+     * 字符串转换 Long 类型
+     *
+     * @param s
+     * @return 不是数字返回 0
+     */
+    public static Long parseLong(String s) {
+        return isNumber(s) ? Long.parseLong(s) : 0;
     }
 
     /**
