@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@RestController()
+@RestController
 public class Chapter01Application {
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
