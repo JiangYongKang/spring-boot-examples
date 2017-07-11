@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8" />
+    <title>统一异常处理页面</title>
+</head>
+<body>
+    <h3>Error Handler</h3>
+    <h4 th:text="'异常请求路径：' + ${url}"></h4>
+    <h4 th:text="'异常消息：' + ${exception.message}"></h4>
+</body>
+</html>
