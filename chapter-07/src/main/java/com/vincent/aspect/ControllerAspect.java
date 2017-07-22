@@ -67,8 +67,8 @@ public class ControllerAspect {
     public void responseBodyPointcut() {
     }
 
-    // 组合切入点表达式可以使用 && || ! 表达式
-    // 方法执行前
+    // 切入点可以通过 "&&"、"||"、"!" 逻辑表达式灵活组合
+    // 前置通知（目标方法执行前执行）
     @Before(value = "controllerPointcut() && !baseControllerPointcut()")
     public void doBefore(JoinPoint point) {
         logger.info("@Before: 连接点对象: " + point.getTarget());
@@ -76,25 +76,33 @@ public class ControllerAspect {
         logger.info("@Before: 连接点输入参数: " + Arrays.toString(point.getArgs()));
     }
 
-    // 方法返回后
+    // 最终通知（无论是否抛出异常，该通知都会执行）
     @After(value = "controllerPointcut()")
     public void doAfter(JoinPoint point) {
         logger.info("@After: 连接点返回对象: ");
     }
 
-    // 方法正常返回
+    // 后置通知（方法正常执行完毕后执行）
+    // returning = "result" 为参数列表中的 "Object result"
+    // "Object result" 为目标方法的返回值
     @AfterReturning(value = "controllerPointcut()", returning = "result")
     public void doAfterReturning(JoinPoint point, Object result) {
         logger.info("@AfterReturning: 连接点返回对象: " + result.toString());
     }
 
-    // 方法抛出异常
+    // 异常抛出通知（在抛出异常后通知）
+    // throwing = "e" 为 参数列表中的 "Exception e"
+    // 而目标方法抛出的异常就是它
     @AfterThrowing(value = "controllerPointcut()", throwing = "e")
     public void doAfterThrowing(JoinPoint point, Exception e) {
         logger.error("@AfterThrowing: 连接点抛出异常: " + e.getMessage());
     }
 
     // 环绕通知（最高优先级）
+    // 在目标方法执行前后都会触发
+    // 调用 point.proceed() 方法执行目标方法，目标方法抛出异常，这里也同样会抛出异常
+    // 这里的异常如果抛给上一级，则会自动进入 @AfterThrowing 方法
+    // 记住: 是抛出异常，而不是被 try catch 吃掉
     @Around(value = "controllerPointcut()")
     public Object doAround(ProceedingJoinPoint point) {
         try {
