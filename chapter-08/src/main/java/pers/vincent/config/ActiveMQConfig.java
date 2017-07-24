@@ -1,6 +1,7 @@
-package pers.vincent;
+package pers.vincent.config;
 
 import org.apache.activemq.command.ActiveMQQueue;
+import org.apache.activemq.command.ActiveMQTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
@@ -9,6 +10,7 @@ import org.springframework.jms.core.JmsTemplate;
 
 import javax.annotation.Resource;
 import javax.jms.Queue;
+import javax.jms.Topic;
 
 // ActiveMQ 配置类
 @EnableJms
@@ -19,8 +21,13 @@ public class ActiveMQConfig {
     private JmsTemplate jmsTemplate;
 
     @Bean
-    public Queue logQueue() {
+    public Queue queue() {
         return new ActiveMQQueue("SAMPLE.QUEUE");
+    }
+
+    @Bean
+    public Topic topic() {
+        return new ActiveMQTopic("SAMPLE.TOPIC");
     }
 
     @Bean

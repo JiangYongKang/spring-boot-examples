@@ -1,4 +1,4 @@
-package pers.vincent;
+package pers.vincent.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.jms.Queue;
+import javax.jms.Topic;
 
 @Service
 public class MQProducerService {
@@ -19,8 +20,16 @@ public class MQProducerService {
     @Resource
     private Queue queue;
 
-    public void send(String message) {
+    @Resource
+    private Topic topic;
+
+    public void sendQueueMessage(String message) {
         template.convertAndSend(queue, message);
-        LOGGER.info(message);
+        LOGGER.info("Queue " + message);
+    }
+
+    public void sendTopicMessage(String message) {
+        template.convertAndSend(topic, message);
+        LOGGER.info("Topic " + message);
     }
 }
