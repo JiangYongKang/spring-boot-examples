@@ -1,4 +1,4 @@
-package com.vincent;
+package com.person.vincent;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class Chapter01ApplicationTests {
+public class StartDemoApplicationTests {
 
     @Test
     public void contextLoads() {
