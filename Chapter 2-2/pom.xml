@@ -6,7 +6,6 @@
     <groupId>pers.vincent</groupId>
     <artifactId>Chapter 2-2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <name>Chapter 2-2</name>
     <description>Spring Boot多数据源配置与使用</description>
