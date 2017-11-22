@@ -20,7 +20,7 @@
         <module>chapter-08</module>
         <module>chapter-09</module>
         <module>Chapter-1-1</module>
-        <module>Chapter 2-2</module>
+        <module>spring-boot-datasource-demo</module>
         <module>Chapter 2-3</module>
         <module>spring-boot-hot-deployment-demo</module>
     </modules>
