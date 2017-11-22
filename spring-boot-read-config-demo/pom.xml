@@ -3,13 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vincent</groupId>
-    <artifactId>chapter-02</artifactId>
+    <artifactId>spring-boot-read-config-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
-    <name>chapter-02</name>
-    <description>配置文件属性</description>
+    <name>spring-boot-read-config-demo</name>
+    <description>spring boot read config demo</description>
 
     <parent>
         <groupId>com.person.vincent</groupId>
