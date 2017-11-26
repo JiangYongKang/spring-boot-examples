@@ -6,7 +6,7 @@
     <groupId>com.vincent</groupId>
     <artifactId>chapter-05</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>chapter-05</name>
     <description>springboot 使用 Swagger2 构建 RESTful API 文档</description>
@@ -15,7 +15,7 @@
         <groupId>com.person.vincent</groupId>
         <artifactId>spring-boot-learn</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>

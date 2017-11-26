@@ -6,7 +6,7 @@
     <groupId>com.vincent</groupId>
     <artifactId>chapter-03</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>chapter-03</name>
     <description>springboot restful API</description>
@@ -15,6 +15,6 @@
         <groupId>com.person.vincent</groupId>
         <artifactId>spring-boot-learn</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 </project>

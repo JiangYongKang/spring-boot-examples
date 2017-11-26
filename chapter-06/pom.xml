@@ -6,7 +6,7 @@
     <groupId>com.vincent</groupId>
     <artifactId>chapter-06</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <name>chapter-06</name>
     <description>springboot 全局统一异常处理</description>
@@ -15,7 +15,7 @@
         <groupId>com.person.vincent</groupId>
         <artifactId>spring-boot-learn</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <dependencies>

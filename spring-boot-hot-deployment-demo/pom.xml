@@ -5,13 +5,13 @@
 
     <artifactId>spring-boot-hot-deployment-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <parent>
         <groupId>com.person.vincent</groupId>
         <artifactId>spring-boot-learn</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/>
+        <relativePath>../pom.xml</relativePath>
     </parent>
 
     <name>spring-boot-hot-deployment-demo</name>
