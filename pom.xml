@@ -21,7 +21,7 @@
         <module>chapter-09</module>
         <module>Chapter-1-1</module>
         <module>spring-boot-datasource-demo</module>
-        <module>Chapter 2-3</module>
+        <module>spring-boot-redis-demo</module>
         <module>spring-boot-hot-deployment-demo</module>
         <module>spring-boot-google-guice-demos</module>
     </modules>
