@@ -3,13 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pers.vincent</groupId>
-    <artifactId>Chapter-1-1</artifactId>
+    <artifactId>spring-data-jpa-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-
-    <name>Chapter-1-1</name>
-    <description>Spring Boot 使用 Spring-data-jpa 简化数据访问</description>
+    <name>spring-data-jpa-demo</name>
+    <description>spring data jpa demo</description>
 
     <parent>
         <groupId>com.person.vincent</groupId>

@@ -1,4 +1,4 @@
-package com.person.vincent;
+package com.person.vincent.repository;
 
 import com.person.vincent.domain.User;
 import org.junit.Assert;
