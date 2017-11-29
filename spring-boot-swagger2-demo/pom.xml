@@ -3,13 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.vincent</groupId>
-    <artifactId>chapter-05</artifactId>
+    <artifactId>spring-boot-swagger2-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>chapter-05</name>
-    <description>springboot 使用 Swagger2 构建 RESTful API 文档</description>
+    <name>spring-boot-swagger2-demo</name>
+    <description>spring boot swagger2 demo</description>
 
     <parent>
         <groupId>com.person.vincent</groupId>

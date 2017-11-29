@@ -1,9 +1,6 @@
-package com.vincent;
+package com.person.vincent;
 
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +9,7 @@ import java.util.Map;
 
 @SpringBootApplication
 @RestController
-public class Application {
+public class Swagger2DemoApplication {
 
     @ApiOperation(value = "返回两个操作数的乘积", notes = "这里是接口的详细说明")
     /*@ApiImplicitParams({
@@ -37,6 +34,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Swagger2DemoApplication.class, args);
     }
 }

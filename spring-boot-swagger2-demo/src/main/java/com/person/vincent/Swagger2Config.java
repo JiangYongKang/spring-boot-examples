@@ -1,4 +1,4 @@
-package com.vincent;
+package com.person.vincent;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
