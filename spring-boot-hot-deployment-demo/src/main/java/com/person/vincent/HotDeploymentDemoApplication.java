@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @SpringBootApplication
 @Controller
-public class Application {
+public class HotDeploymentDemoApplication {
 
     @ResponseBody
     @RequestMapping(value = "/say", method = RequestMethod.GET)
@@ -19,6 +19,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(HotDeploymentDemoApplication.class, args);
     }
 }
