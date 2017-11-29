@@ -1,4 +1,4 @@
-package com.vincent;
+package com.person.vincent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @SpringBootApplication
 @Controller
-public class Application {
+public class GlobalExceptionDemoApplication {
 
     @RequestMapping("/global/error")
     public String error() throws Exception {
@@ -20,6 +20,6 @@ public class Application {
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(GlobalExceptionDemoApplication.class, args);
     }
 }

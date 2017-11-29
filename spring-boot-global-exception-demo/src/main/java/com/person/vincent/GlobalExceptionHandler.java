@@ -1,4 +1,4 @@
-package com.vincent;
+package com.person.vincent;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

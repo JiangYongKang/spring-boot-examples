@@ -1,4 +1,4 @@
-package com.vincent;
+package com.person.vincent;
 
 /**
  * Created by IDEA.
