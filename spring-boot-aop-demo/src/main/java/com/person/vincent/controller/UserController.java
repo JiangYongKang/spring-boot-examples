@@ -1,6 +1,6 @@
-package com.vincent.controller;
+package com.person.vincent.controller;
 
-import com.vincent.domain.UserBean;
+import com.person.vincent.domain.UserBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 

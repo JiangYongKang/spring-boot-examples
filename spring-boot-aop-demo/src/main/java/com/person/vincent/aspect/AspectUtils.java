@@ -1,4 +1,4 @@
-package com.vincent.aspect;
+package com.person.vincent.aspect;
 
 import org.aspectj.lang.JoinPoint;
 import org.slf4j.Logger;

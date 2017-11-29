@@ -1,6 +1,5 @@
-package com.vincent.aspect;
+package com.person.vincent.aspect;
 
-import com.vincent.controller.UserController;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
@@ -53,12 +52,12 @@ public class ControllerAspect {
     private static Logger logger = LoggerFactory.getLogger(ControllerAspect.class);
 
     // 切入点: 通过 AspectJ 切入点语法匹配
-    @Pointcut(value = "execution(* com.vincent.controller.*.*(..))")
+    @Pointcut(value = "execution(* com.person.vincent.controller.*.*(..))")
     public void controllerPointcut() {
     }
 
     // 切入点: 绝对包路径指定类下的任意方法
-    @Pointcut(value = "execution(* com.vincent.controller.BaseController.*(..))")
+    @Pointcut(value = "execution(* com.person.vincent.controller.BaseController.*(..))")
     public void baseControllerPointcut() {
     }
 

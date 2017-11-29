@@ -1,4 +1,4 @@
-package com.vincent.controller;
+package com.person.vincent.controller;
 
 import org.springframework.stereotype.Controller;
 

@@ -1,6 +1,4 @@
-package com.vincent.domain;
-
-import java.util.UUID;
+package com.person.vincent.domain;
 
 public class UserBean {
     private Integer id;
