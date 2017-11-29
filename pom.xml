@@ -18,7 +18,7 @@
         <module>spring-boot-global-exception-demo</module>
         <module>spring-boot-aop-demo</module>
         <module>spring-boot-activemq-demo</module>
-        <module>chapter-09</module>
+        <module>spring-boot-jdbc-template-demo</module>
         <module>spring-data-jpa-demo</module>
         <module>spring-boot-datasource-demo</module>
         <module>spring-boot-redis-demo</module>

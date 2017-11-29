@@ -3,13 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pers.vincent</groupId>
-    <artifactId>chapter-09</artifactId>
+    <artifactId>spring-boot-jdbc-template-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
-    <name>chapter-09</name>
-    <description>Spring Boot 中使用 JdbcTemplate 访问数据库</description>
+    <name>spring-boot-jdbc-template-demo</name>
+    <description>spring boot jdbc template demo</description>
 
     <parent>
         <groupId>com.person.vincent</groupId>

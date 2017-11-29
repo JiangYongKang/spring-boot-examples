@@ -1,4 +1,4 @@
-package com.person.vincent;
+package com.person.vincent.service;
 
 import org.junit.Assert;
 import org.junit.Before;
