@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-datasource-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
     <name>spring-boot-datasource-demo</name>
     <description>spring boot datasource demo</description>
 

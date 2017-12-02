@@ -5,7 +5,10 @@
 
     <artifactId>spring-boot-hot-deployment-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
+
+    <name>spring-boot-hot-deployment-demo</name>
+    <description>Spring boot hot deployment demo</description>
 
     <parent>
         <groupId>com.person.vincent</groupId>
@@ -13,9 +16,6 @@
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-
-    <name>spring-boot-hot-deployment-demo</name>
-    <description>Spring boot hot deployment demo</description>
 
     <dependencies>
         <dependency>

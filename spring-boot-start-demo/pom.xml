@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-start-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>spring-boot-start-demo</name>
     <description>spring boot start demo</description>

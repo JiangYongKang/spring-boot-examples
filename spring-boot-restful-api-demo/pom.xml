@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-restful-api-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>spring-boot-restful-api-demo</name>
     <description>spring boot restful api demo</description>

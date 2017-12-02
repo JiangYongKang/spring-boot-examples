@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-activemq-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>spring-boot-activemq-demo</name>
     <description>spring boot activemq demo</description>

@@ -5,7 +5,7 @@
 
     <artifactId>spring-boot-jdbc-template-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
 
     <name>spring-boot-jdbc-template-demo</name>
     <description>spring boot jdbc template demo</description>

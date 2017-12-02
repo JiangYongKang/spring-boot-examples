@@ -5,7 +5,8 @@
 
     <artifactId>spring-data-jpa-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
+
     <name>spring-data-jpa-demo</name>
     <description>spring data jpa demo</description>
 
