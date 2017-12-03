@@ -1,0 +1,7 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch_vincent # 集群的名称
+      cluster-nodes: 127.0.0.1:9300       # 连接节点
+      repositories:
+        enabled: true                     # 仓库中数据存储
