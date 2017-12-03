@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import javax.inject.Inject;
+import javax.inject.Provider;
+import java.util.List;
 
 /**
  * Created by IDEA.
@@ -19,6 +21,9 @@ public class OrderServiceTest {
     @Inject
     private OrderService orderService;
 
+    @Inject
+    private Provider<List<String>> supportedCurrenciesProvider;
+
     // 成员属性注入
     @Before
     public void setUp() {
@@ -28,5 +33,10 @@ public class OrderServiceTest {
     @Test
     public void sendToPaymentTest() {
         orderService.sendToPayment(789L);
+    }
+
+    @Test
+    public void testSupportedCurrencies() {
+        System.out.println(supportedCurrenciesProvider.get());
     }
 }

@@ -1,5 +1,7 @@
 package com.person.vincent.server;
 
+import java.util.List;
+
 /**
  * Created by IDEA.
  * User: vincent
@@ -8,4 +10,6 @@ package com.person.vincent.server;
  */
 public interface PriceService {
     long getPrice(long orderId);
+
+    List<String> getSupportedCurrencies();
 }

@@ -3,6 +3,8 @@ package com.person.vincent.server;
 import com.google.inject.AbstractModule;
 import com.google.inject.Provides;
 
+import java.util.List;
+
 /**
  * Created by IDEA.
  * User: vincent
@@ -23,5 +25,10 @@ public class ServerModule extends AbstractModule {
     @SessionId
     Long generateSessionId() {
         return System.currentTimeMillis();
+    }
+
+    @Provides
+    List<String> getSupportedCurrencies(PriceService priceService) {
+        return priceService.getSupportedCurrencies();
     }
 }
