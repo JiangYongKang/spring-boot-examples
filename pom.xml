@@ -25,6 +25,8 @@
         <module>spring-boot-hot-deployment-demo</module>
         <module>spring-boot-google-guice-demos</module>
         <module>spring-boot-elasticsearch-demo</module>
+        <module>spring-boot-session-example</module>
+        <module>spring-boot-configuration-demo</module>
     </modules>
 
     <parent>

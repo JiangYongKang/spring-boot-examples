@@ -1,0 +1,20 @@
+{
+  "properties": [
+    {
+      "name": "configuration.example.name",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "configuration.example.version",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "configuration.example.author",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "configuration.example.license",
+      "type": "java.lang.String"
+    }
+  ]
+}
