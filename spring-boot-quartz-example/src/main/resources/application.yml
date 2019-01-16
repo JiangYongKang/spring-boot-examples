@@ -1,0 +1,37 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      username: root
+      password: root
+      url: jdbc:mysql://127.0.0.1:3306/spring-boot-quartz-example
+#  jpa:
+#    properties:
+#      hibernate:
+#        temp:
+#          use_jdbc_metadata_defaults: false
+#        ddl-auto: update
+#      show-sql: true
+#  quartz:
+#    properties:
+#      org:
+#        quartz:
+#          scheduler:
+#            instanceName: clusteredScheduler
+#            instanceId: AUTO
+#          jobStore:
+#            class: org.quartz.impl.jdbcjobstore.JobStoreTX
+#            driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+#            tablePrefix: QRTZ_
+#            isClustered: true
+#            clusterCheckinInterval: 10000
+#            useProperties: false
+#            dataSource: spring-boot-quartz-example
+#          threadPool:
+#            class: org.quartz.simpl.SimpleThreadPool
+#            threadCount: 10
+#            threadPriority: 5
+#            threadsInheritContextClassLoaderOfInitializingThread: true
+#    job-store-type: jdbc
+#    jdbc:
+#      initialize-schema: never

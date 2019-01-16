@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>mail-template</title>
+</head>
+<body>
+    <p>你好，感谢您的注册，这是一封注册邮件，请点击下面的链接完成注册，感谢您的支持！</p>
+    <a href="#" th:href="@{https://www.example.com/register/{id}(id=${id})}">激活链接</a>
+</body>
+</html>
