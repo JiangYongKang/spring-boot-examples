@@ -16,7 +16,7 @@
         <module>spring-boot-thymeleaf-demo</module>
         <module>spring-boot-swagger2-demo</module>
         <module>spring-boot-global-exception-demo</module>
-        <module>spring-boot-aop-demo</module>
+        <module>spring-boot-aop-example</module>
         <module>spring-boot-activemq-example</module>
         <module>spring-boot-jdbc-template-demo</module>
         <module>spring-data-jpa-demo</module>
