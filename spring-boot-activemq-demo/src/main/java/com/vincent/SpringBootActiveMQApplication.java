@@ -1,12 +1,13 @@
-package com.person.vincent;
+package com.vincent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+
 @SpringBootApplication
-public class ActiveMQDemoApplication {
+public class SpringBootActiveMQApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ActiveMQDemoApplication.class, args);
+        SpringApplication.run(SpringBootActiveMQApplication.class, args);
     }
 }
