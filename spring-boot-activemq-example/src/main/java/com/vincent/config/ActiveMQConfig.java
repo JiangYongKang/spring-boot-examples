@@ -23,16 +23,29 @@ import java.util.concurrent.Executors;
 @Configuration
 public class ActiveMQConfig {
 
+    /**
+     * 创建一个消息队列，队列的名字为 defaultQueue
+     * @return 点对点的消息队列
+     */
     @Bean
     public Queue defaultQueue() {
         return new ActiveMQQueue("defaultQueue");
     }
 
+    /**
+     * 创建一个主题消息队列，队列的名字为 defaultTopic
+     * @return 主题消息队列
+     */
     @Bean
     public Topic defaultTopic() {
         return new ActiveMQTopic("defaultTopic");
     }
 
+    /**
+     * 手动配置主题消息的 factory
+     * @param connectionFactory
+     * @return 主题消息的 factory
+     */
     @Bean
     public JmsListenerContainerFactory<?> topicListenerContainerFactory(ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory = new DefaultJmsListenerContainerFactory();
@@ -43,6 +56,11 @@ public class ActiveMQConfig {
         return defaultJmsListenerContainerFactory;
     }
 
+    /**
+     * 手动配置队列消息的 factory
+     * @param connectionFactory
+     * @return 队列消息的 factory
+     */
     @Bean
     public JmsListenerContainerFactory<?> queueListenerContainerFactory(ConnectionFactory connectionFactory) {
         DefaultJmsListenerContainerFactory defaultJmsListenerContainerFactory = new DefaultJmsListenerContainerFactory();

@@ -3,7 +3,7 @@ package com.vincent.service;
 /**
  * author: vincent
  * date: 2019-03-18 11:14
- * comment:
+ * comment: 消息生产者
  */
 
 public interface MessageService {
@@ -19,5 +19,12 @@ public interface MessageService {
      * @param message 消息内容
      */
     void sendToTopic(String message);
+
+    /**
+     * 发送延时消息
+     * @param message 消息内容
+     * @param delay   延时发送时间
+     */
+    void sendToQueue(String message, Long delay);
 
 }

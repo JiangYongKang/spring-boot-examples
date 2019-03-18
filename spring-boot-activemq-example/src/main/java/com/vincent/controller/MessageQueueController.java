@@ -24,7 +24,7 @@ public class MessageQueueController {
     private MessageService messageService;
 
     @GetMapping("/{message}")
-    public ResponseEntity<?> send(@PathVariable String message) {
+    public ResponseEntity<?> send(@PathVariable("message") String message) {
         messageService.sendToQueue(message);
         return ResponseEntity.ok(message);
     }

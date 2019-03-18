@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <name>spring-boot-activemq-demo</name>
-    <description>spring boot activemq demo</description>
-    <artifactId>spring-boot-activemq-demo</artifactId>
+    <name>spring-boot-activemq-example</name>
+    <description>spring boot activemq example</description>
+    <artifactId>spring-boot-activemq-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>
