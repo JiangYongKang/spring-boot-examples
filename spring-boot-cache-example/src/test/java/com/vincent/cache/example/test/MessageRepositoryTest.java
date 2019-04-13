@@ -30,11 +30,11 @@ public class MessageRepositoryTest {
     @Before
     public void beforeAction() {
         List<Message> messages = Arrays.asList(
-                new Message("敬业"),
-                new Message("和谐"),
-                new Message("团结"),
-                new Message("友善"),
-                new Message("富强")
+                new Message("Billie", "敬业"),
+                new Message("Nathalia", "和谐"),
+                new Message("Katharine", "团结"),
+                new Message("Perry", "友善"),
+                new Message("Howard", "富强")
         );
         messageService.batchInstall(messages);
     }
@@ -42,8 +42,11 @@ public class MessageRepositoryTest {
     @Test
     public void saveTest() {
         messageService.selectAll();
-        messageService.selectAll();
-        messageService.selectAll();
+        Message message = messageService.selectOne(1);
+        message.setContent("更新消息");
+        messageService.update(message);
+        messageService.selectOne(2);
+        messageService.selectOne(3);
     }
 
 }

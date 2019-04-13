@@ -24,6 +24,9 @@ public class Message implements Serializable {
     private Integer id;
 
     @Column(nullable = false)
+    private String nickName;
+
+    @Column(nullable = false)
     private String content;
 
     @Column(nullable = false, length = 1, columnDefinition = "tinyint default 0")
@@ -36,7 +39,8 @@ public class Message implements Serializable {
     @UpdateTimestamp
     private Timestamp updatedAt;
 
-    public Message(String content) {
+    public Message(String nickName, String content) {
+        this.nickName = nickName;
         this.content = content;
     }
 }

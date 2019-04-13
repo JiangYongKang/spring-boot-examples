@@ -4,6 +4,7 @@ import com.vincent.cache.example.model.Message;
 import com.vincent.cache.example.repository.MessageRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
@@ -35,12 +36,12 @@ public class MessageService {
         return messageRepository.findOne(id);
     }
 
-    @CachePut
+    @CacheEvict
     public void batchInstall(List<Message> messages) {
         messageRepository.save(messages);
     }
 
-    @CachePut
+    @CacheEvict
     public Message update(Message message) {
         return messageRepository.save(message);
     }
