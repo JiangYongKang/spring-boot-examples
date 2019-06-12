@@ -7,7 +7,7 @@
     <artifactId>spring-boot-configuration-demo</artifactId>
 
     <parent>
-        <artifactId>spring-boot-learn</artifactId>
+        <artifactId>spring-boot-examples</artifactId>
         <groupId>com.person.vincent</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>

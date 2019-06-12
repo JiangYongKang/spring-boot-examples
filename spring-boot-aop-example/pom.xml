@@ -11,7 +11,7 @@
 
     <parent>
         <groupId>com.person.vincent</groupId>
-        <artifactId>spring-boot-learn</artifactId>
+        <artifactId>spring-boot-examples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
