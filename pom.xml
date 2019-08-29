@@ -36,7 +36,6 @@
         <module>spring-boot-datasource-demo</module>
         <module>spring-boot-redis-demo</module>
         <module>spring-boot-hot-deployment-demo</module>
-        <module>spring-boot-google-guice-demos</module>
         <module>spring-boot-elasticsearch-demo</module>
         <module>spring-boot-session-example</module>
         <module>spring-boot-email-example</module>

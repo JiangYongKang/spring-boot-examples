@@ -10,7 +10,7 @@
     <description>spring boot start demo</description>
 
     <parent>
-        <groupId>com.vincent</groupId>
+        <groupId>com.vincent.examples</groupId>
         <artifactId>spring-boot-examples</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
