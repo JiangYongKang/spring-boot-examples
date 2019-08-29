@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>com.vincent</groupId>
+    <groupId>com.vincent.examples</groupId>
     <artifactId>spring-boot-examples</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -24,8 +24,8 @@
     <modules>
         <module>spring-boot-quick-start-example</module>
         <module>spring-boot-cache-example</module>
-        <module>spring-boot-read-config-demo</module>
-        <module>spring-boot-restful-api-demo</module>
+        <module>spring-boot-configuration-example</module>
+        <module>spring-boot-api-example</module>
         <module>spring-boot-thymeleaf-demo</module>
         <module>spring-boot-swagger2-demo</module>
         <module>spring-boot-global-exception-demo</module>
@@ -39,7 +39,6 @@
         <module>spring-boot-google-guice-demos</module>
         <module>spring-boot-elasticsearch-demo</module>
         <module>spring-boot-session-example</module>
-        <module>spring-boot-configuration-demo</module>
         <module>spring-boot-email-example</module>
         <module>spring-boot-quartz-example</module>
     </modules>
