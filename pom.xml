@@ -26,7 +26,7 @@
         <module>spring-boot-cache-example</module>
         <module>spring-boot-configuration-example</module>
         <module>spring-boot-api-example</module>
-        <module>spring-boot-thymeleaf-demo</module>
+        <module>spring-boot-thymeleaf-example</module>
         <module>spring-boot-swagger-example</module>
         <module>spring-boot-global-exception-demo</module>
         <module>spring-boot-aop-example</module>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>消息列表页</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>昵称</td>
+        <td>内容</td>
+        <td>状态</td>
+        <td>创建时间</td>
+        <td>更新时间</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="message : ${messages}">
+        <td th:text="${message.id}"></td>
+        <td th:text="${message.nickName}"></td>
+        <td th:text="${message.content}"></td>
+        <td th:text="${message.state}"></td>
+        <td th:text="${message.createdAt}"></td>
+        <td th:text="${message.updatedAt}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
