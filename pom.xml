@@ -31,12 +31,11 @@
         <module>spring-boot-exception-example</module>
         <module>spring-boot-aop-example</module>
         <module>spring-boot-activemq-example</module>
-        <module>spring-boot-jdbc-template-demo</module>
+        <module>spring-boot-jdbc-template-example</module>
         <module>spring-data-jpa-demo</module>
         <module>spring-boot-datasource-demo</module>
         <module>spring-boot-redis-demo</module>
         <module>spring-boot-hot-deployment-demo</module>
-        <module>spring-boot-elasticsearch-demo</module>
         <module>spring-boot-session-example</module>
         <module>spring-boot-email-example</module>
         <module>spring-boot-quartz-example</module>

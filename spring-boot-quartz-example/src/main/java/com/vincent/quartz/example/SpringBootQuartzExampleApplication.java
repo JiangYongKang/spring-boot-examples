@@ -8,7 +8,6 @@ import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
 @SpringBootApplication
 public class SpringBootQuartzExampleApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(SpringBootQuartzExampleApplication.class, args);
     }
