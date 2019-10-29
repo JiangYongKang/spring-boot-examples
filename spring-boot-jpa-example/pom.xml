@@ -2,9 +2,9 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <name>spring-data-jpa-demo</name>
-    <description>spring data jpa demo</description>
-    <artifactId>spring-data-jpa-demo</artifactId>
+    <name>spring-boot-jpa-example</name>
+    <description>spring boot jpa example</description>
+    <artifactId>spring-boot-jpa-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     <modelVersion>4.0.0</modelVersion>

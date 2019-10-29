@@ -32,7 +32,7 @@
         <module>spring-boot-aop-example</module>
         <module>spring-boot-activemq-example</module>
         <module>spring-boot-jdbc-template-example</module>
-        <module>spring-data-jpa-demo</module>
+        <module>spring-boot-jpa-example</module>
         <module>spring-boot-datasource-demo</module>
         <module>spring-boot-redis-demo</module>
         <module>spring-boot-hot-deployment-demo</module>
