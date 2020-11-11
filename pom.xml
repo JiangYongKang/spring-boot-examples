@@ -3,43 +3,23 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>com.vincent.examples</groupId>
+    <groupId>org.spring.boot.examples</groupId>
     <artifactId>spring-boot-examples</artifactId>
-    <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
     <modelVersion>4.0.0</modelVersion>
     <description>SpringBoot examples</description>
-
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.2.2.RELEASE</version>
+        <version>2.3.5.RELEASE</version>
         <relativePath/>
     </parent>
 
     <modules>
-        <module>spring-boot-quick-start-example</module>
-        <module>spring-boot-cache-example</module>
-        <module>spring-boot-configuration-example</module>
-        <module>spring-boot-api-example</module>
-        <module>spring-boot-thymeleaf-example</module>
-        <module>spring-boot-swagger-example</module>
-        <module>spring-boot-exception-example</module>
-        <module>spring-boot-activemq-example</module>
-        <module>spring-boot-jdbc-template-example</module>
-        <module>spring-boot-jpa-example</module>
-        <module>spring-boot-datasource-example</module>
-        <module>spring-boot-redis-example</module>
-        <module>spring-boot-session-example</module>
-        <module>spring-boot-email-example</module>
-        <module>spring-boot-quartz-example</module>
-        <module>spring-boot-mybatisplus-example</module>
+        <module>spring-boot-restful</module>
     </modules>
-
 
     <dependencies>
         <dependency>
