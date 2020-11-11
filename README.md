@@ -11,3 +11,4 @@
 ### 文章列表
 
 - [SpringBoot（一）：入门体验](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-restful)
+- [SpringBoot（二）：定时任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-scheduling)
