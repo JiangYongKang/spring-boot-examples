@@ -10,4 +10,4 @@
 
 ### 文章列表
 
-- [SpringBoot（一）：入门体验](https://github.com/JiangYongKang/spring-boot-examples/spring-boot-restful)
+- [SpringBoot（一）：入门体验](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-restful)
