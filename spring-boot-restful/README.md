@@ -1,4 +1,4 @@
-# spring-boot-restful
+# SpringBoot（一）：入门体验
 **SpringBoot** 是 **Spring** 框架的进一步封装，其设计的目的是用来简化 Spring 应用的框架搭建和开发过程。SpringBoot 使用 **约定大于配置** 的原则，使得开发人员不需要在进行大量样板化的配置，从而专注与业务逻辑上的开发工作。本文通过一个 "Hello World" 示例程序，展示 SpringBoot 在依赖自动管理，自动配置带来的快速开发体验。
 
 ### 添加依赖
