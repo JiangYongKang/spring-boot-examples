@@ -13,3 +13,4 @@
 - [SpringBoot（一）：入门体验](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-restful)
 - [SpringBoot（二）：定时任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-scheduling)
 - [SpringBoot（三）：使用 JPA 访问数据库](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-data-jpa)
+- [SpringBoot（四）：使用 MyBatis 访问数据库](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-mybatis)

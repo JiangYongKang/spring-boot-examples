@@ -21,6 +21,7 @@
         <module>spring-boot-restful</module>
         <module>spring-boot-scheduling</module>
         <module>spring-boot-data-jpa</module>
+        <module>spring-boot-mybatis</module>
     </modules>
 
     <build>
