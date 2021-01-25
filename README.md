@@ -16,3 +16,4 @@
 - [SpringBoot（四）：使用 MyBatis 访问数据库](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-mybatis)
 - [SpringBoot（五）：使用数据库连接池 Druid](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-druid)
 - [SpringBoot（六）：SpringBoot 中访问 Redis](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-redis)
+- [SpringBoot（七）：SpringBoot 项目中使用 Swagger](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-swagger)
