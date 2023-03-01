@@ -10,10 +10,6 @@
 
 ### 文章列表
 
-- [SpringBoot（一）：入门体验](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-restful)
-- [SpringBoot（二）：定时任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-scheduling)
-- [SpringBoot（三）：使用 JPA 访问数据库](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-data-jpa)
-- [SpringBoot（四）：使用 MyBatis 访问数据库](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-mybatis)
-- [SpringBoot（五）：使用数据库连接池 Druid](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-druid)
+- [SpringBoot（二）：定时任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-schedule)
 - [SpringBoot（六）：SpringBoot 中访问 Redis](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-redis)
 - [SpringBoot（七）：SpringBoot 项目中使用 Swagger](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-swagger)

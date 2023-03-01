@@ -13,19 +13,27 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.5.RELEASE</version>
+        <version>3.0.3</version>
         <relativePath/>
     </parent>
 
     <modules>
-        <module>spring-boot-restful</module>
-        <module>spring-boot-scheduling</module>
-        <module>spring-boot-data-jpa</module>
-        <module>spring-boot-mybatis</module>
-        <module>spring-boot-druid</module>
+        <module>spring-boot-schedule</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-swagger</module>
     </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <build>
         <plugins>

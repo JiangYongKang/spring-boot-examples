@@ -1,9 +1,0 @@
-spring:
-  datasource:
-    url: jdbc:h2:mem:test;MODE=MYSQL
-    driver-class-name: org.h2.Driver
-    schema: classpath:db/schema.sql
-    initialization-mode: always
-
-mybatis:
-  mapper-locations: classpath:mybatis/*.xml
