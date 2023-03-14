@@ -11,5 +11,6 @@
 ### 文章列表
 
 - [SpringBoot（二）：定时任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-schedule)
+- [SpringBoot（三）：异步任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-async)
 - [SpringBoot（六）：SpringBoot 中访问 Redis](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-redis)
 - [SpringBoot（七）：SpringBoot 项目中使用 Swagger](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-swagger)

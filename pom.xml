@@ -10,6 +10,12 @@
     <modelVersion>4.0.0</modelVersion>
     <description>SpringBoot examples</description>
 
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -21,6 +27,7 @@
         <module>spring-boot-schedule</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-swagger</module>
+        <module>spring-boot-async</module>
     </modules>
 
     <dependencies>
