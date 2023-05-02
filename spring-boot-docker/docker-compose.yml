@@ -1,0 +1,7 @@
+version: "1"
+services:
+  spring-boot-docker:
+    image: spring-boot-docker:1.0.0
+    container_name: spring-boot-docker-dev
+    ports:
+      - 18080:8080
