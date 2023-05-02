@@ -1,6 +1,6 @@
 package spring.boot.redis.tests;
 
-import jakarta.annotation.Resource;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +9,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import spring.boot.redis.config.MessageEventListener;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 

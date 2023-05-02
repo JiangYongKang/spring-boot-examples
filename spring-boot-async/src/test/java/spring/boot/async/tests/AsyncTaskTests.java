@@ -1,11 +1,11 @@
 package spring.boot.async.tests;
 
-import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import spring.boot.async.task.AsyncTask;
 
+import javax.annotation.Resource;
 import java.util.concurrent.CompletableFuture;
 
 /**

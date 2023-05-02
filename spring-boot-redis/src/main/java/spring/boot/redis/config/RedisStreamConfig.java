@@ -1,6 +1,6 @@
 package spring.boot.redis.config;
 
-import jakarta.annotation.Resource;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +12,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import org.springframework.data.redis.stream.Subscription;
 
+import javax.annotation.Resource;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Collections;
