@@ -28,6 +28,7 @@
         <module>spring-boot-redis</module>
         <module>spring-boot-swagger</module>
         <module>spring-boot-async</module>
+        <module>spring-boot-docker</module>
     </modules>
 
     <dependencies>
