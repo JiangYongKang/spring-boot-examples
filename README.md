@@ -13,4 +13,5 @@
 - [SpringBoot（二）：定时任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-schedule)
 - [SpringBoot（三）：异步任务](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-async)
 - [SpringBoot（四）：Redis 缓存与 Stream](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-redis)
+- [SpringBoot（五）：使用 Docker 部署](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-docker)
 - [SpringBoot（七）：SpringBoot 项目中使用 Swagger](https://github.com/JiangYongKang/spring-boot-examples/tree/master/spring-boot-swagger)

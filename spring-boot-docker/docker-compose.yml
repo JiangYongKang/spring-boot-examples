@@ -1,7 +1,23 @@
-version: "1"
+version: "3.3"
 services:
-  spring-boot-docker:
-    image: spring-boot-docker:1.0.0
-    container_name: spring-boot-docker-dev
+  redis:
+    image: redis:7
+    container_name: redis
+    ports:
+      - 16379:6379
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    ports:
+      - 13306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+  application:
+    build: .
+    image: spring-boot-docker:latest
+    container_name: spring-boot-docker
     ports:
       - 18080:8080
+    depends_on:
+      - redis
+      - mysql
