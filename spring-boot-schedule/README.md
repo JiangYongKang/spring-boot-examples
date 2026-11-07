@@ -1,113 +1,33 @@
-# SpringBoot（二）：定时任务
+# 一、这个模块做什么
 
-在开发过程中，很多需求都需要定时任务才能完成。SpringBoot 提供了简单快捷的实现方式，我们只需要添加一些注解就可以使用。常见的一些需要使用到定时任务的场景。例如：数据备份，消息推送，生成报表等。
+这个模块演示 Spring 的定时任务。应用启动后，三个任务大约每秒各执行一次，方法里只打一行日志。
 
-### 启用定时任务
+它是父工程的一个子模块，依赖 spring-boot-starter-web。没有 Controller，也没有 application.properties。单独启动时，内嵌 Web 容器占用默认端口 8080。仓库总览写在根目录 README.md。
 
-通过在启动类上添加 `@EnableScheduling` 注解即可启动定时任务。
+这份说明按当前源码静态整理，没有启动应用。
 
-```java
-@Slf4j
-@EnableScheduling
-@Configuration
-public class ScheduleConfig {
-}
-```
+# 二、调度线程池
 
-### 设置定时任务
+调度配置在 ScheduleConfig，包名是 spring.boot.schedule.config。类上有 @Configuration 和 @EnableScheduling，并实现了 SchedulingConfigurer。
 
-```java
-@Slf4j
-@Component
-public class ScheduledTasks {
+configureTasks 里创建 ThreadPoolTaskScheduler，初始化后交给 ScheduledTaskRegistrar。
 
-    @Scheduled(fixedRate = 1000)
-    public void fixedRateTask() {
-        log.info("固定速率执行，每秒执行一次");
-    }
+1. 池大小是 8。
+2. 线程名前缀是 run-schedule-。
+3. setRemoveOnCancelPolicy(true)，任务取消后会从队列里去掉。
 
-}
-```
+# 三、三个定时任务
 
-执行日志：
+任务写在 ScheduledTasks。包名是 spring.boot.schedule.schdule，schdule 少写了一个字母。类上是 @Component。
 
-```
-2023-03-13T21:59:47.739+08:00  INFO 16964 --- [pool-1-thread-1] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-2023-03-13T21:59:48.736+08:00  INFO 16964 --- [pool-1-thread-1] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-2023-03-13T21:59:49.734+08:00  INFO 16964 --- [pool-1-thread-1] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-2023-03-13T21:59:50.730+08:00  INFO 16964 --- [pool-1-thread-1] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-```
+1. asyncFixedRateTask 使用 fixedRate = 1000。间隔从上次开始时刻算起，满 1 秒再触发。日志是“固定速率执行，每秒执行一次”。方法名里带 async，方法上没有 @Async，它跑在上面的调度池里。
+2. fixedDelayTask 使用 fixedDelay = 1000。上一次方法返回之后再等 1 秒。日志是“固定延迟执行，距离上一次调用成功后一秒执行”。
+3. cronTask 的表达式是 */1 * * * * ?。日志是“使用 Cron 表达式，每秒执行一次”。
 
-`@Scheduled` 可以设置两种类型的定时任务，一种是基于固定值间隔的定时任务，另一种是基于 `cron` 表达式的定时任务。`cron` 直接传表达式就可以了。例如：
+三个方法都没有参数，也没有业务数据。
 
-- `@Scheduled(cron = "*/5 * * * * ?")` 每秒钟执行一次
-- `@Scheduled(fixedRate = 1000)` 上一次开始执行时间点之后一秒再执行
-- `@Scheduled(fixedDelay = 1000)` 上一次执行完毕时间点之后一秒再执行
-- `@Scheduled(initialDelay = 1000, fixedRate = 1000)` ：第一次延迟一秒后执行，之后按 `fixedRate` 的规则每秒执行一次
+# 四、测试
 
-### 配置定时任务线程池
+测试类是 SpringBootScheduleApplicationTests，注解为 @SpringBootTest。唯一的测试方法 contentLoad 是空的，用来把 Spring 上下文拉起来。
 
-默认情况下定时任务是单线程的，因为有时候需要执行的定时任务会很多，如果是串行执行会带来一些问题。比如一个很耗时的任务阻塞住了，一些需要短周期循环执行的任务也会卡住。所以可以配置一个线程池来并行执行定时任务。SpringBoot 中可以通过实现 `SchedulingConfigurer` 接口来进行配置。
-
-```Java
-@Slf4j
-@EnableScheduling
-@Configuration
-public class ScheduleConfig implements SchedulingConfigurer {
-
-    @Override
-    public void configureTasks(ScheduledTaskRegistrar registrar) {
-        // 创建一个线程池
-        ThreadPoolTaskScheduler taskScheduler = new ThreadPoolTaskScheduler();
-        // 配置核心线程数量 8 个
-        taskScheduler.setPoolSize(8);
-        // 设置线程名的前缀
-        taskScheduler.setThreadNamePrefix("run-schedule-");
-        // 设置是否将取消后的任务从队列中清除
-        taskScheduler.setRemoveOnCancelPolicy(true);
-        // 初始化线程池
-        taskScheduler.initialize();
-        registrar.setTaskScheduler(taskScheduler);
-    }
-
-}
-```
-
-然后添加多个不同频率的定时任务，让它们并发执行
-
-```Java
-@Slf4j
-@Component
-public class ScheduledTasks {
-
-    @Scheduled(fixedRate = 1000)
-    public void asyncFixedRateTask() {
-        log.info("固定速率执行，每秒执行一次");
-    }
-
-    @Scheduled(fixedDelay = 1000)
-    public void fixedDelayTask() {
-        log.info("固定延迟执行，距离上一次调用成功后一秒执行");
-    }
-
-    @Scheduled(cron = "*/1 * * * * ?")
-    public void cronTask() {
-        log.info("使用 Cron 表达式，每秒执行一次");
-    }
-
-}
-```
-
-根据下面的执行日志，发现线程名已经由 `pool-1-thread-1` 变成了 `run-schedule-*`，定时任务也是在并发的执行。
-
-```
-2023-03-13T22:07:34.046+08:00  INFO 1316 --- [ run-schedule-1] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-2023-03-13T22:07:34.046+08:00  INFO 1316 --- [ run-schedule-4] spring.boot.schedule.schdule.ScheduledTasks      : 固定延迟执行，距离上一次调用成功后一秒执行
-2023-03-13T22:07:35.013+08:00  INFO 1316 --- [ run-schedule-2] spring.boot.schedule.schdule.ScheduledTasks      : 使用 Cron 表达式，每秒执行一次
-2023-03-13T22:07:35.044+08:00  INFO 1316 --- [ run-schedule-5] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-2023-03-13T22:07:35.059+08:00  INFO 1316 --- [ run-schedule-3] spring.boot.schedule.schdule.ScheduledTasks      : 固定延迟执行，距离上一次调用成功后一秒执行
-2023-03-13T22:07:36.002+08:00  INFO 1316 --- [ run-schedule-6] spring.boot.schedule.schdule.ScheduledTasks      : 使用 Cron 表达式，每秒执行一次
-2023-03-13T22:07:36.033+08:00  INFO 1316 --- [ run-schedule-1] spring.boot.schedule.schdule.ScheduledTasks      : 固定速率执行，每秒执行一次
-2023-03-13T22:07:36.065+08:00  INFO 1316 --- [ run-schedule-4] spring.boot.schedule.schdule.ScheduledTasks      : 固定延迟执行，距离上一次调用成功后一秒执行
-2023-03-13T22:07:37.000+08:00  INFO 1316 --- [ run-schedule-7] spring.boot.schedule.schdule.ScheduledTasks      : 使用 Cron 表达式，每秒执行一次
-```
+上下文起来之后，上面三个定时任务会开始跑。测试没有断言。

@@ -1,19 +1,14 @@
-# SpringBoot（四）：Redis 缓存与 Stream
+# 一、这个模块做什么
 
-**Remote Dictionary Server(Redis)** 是一个由 **Salvatore Sanfilippo** 写的 KEY-VALUE 存储系统。Redis 是一个开源的使用 ANSI C 语言编写、遵守 BSD 协议、支持网络、可基于内存亦可持久化的日志型、Key-Value 数据库，并提供多种语言的 API。它通常被称为数据结构服务器，因为值可以是字符串, 哈希, 列表, 集合和有序集合等类型。在 Redis 5 版本，还添加了对 Stream 这一特殊的数据结构的支持。
+这个模块演示用 Spring Data Redis 读写字符串和哈希，并在启动时监听一条 Redis Stream。
 
-### 添加依赖
+它是父工程的一个子模块，依赖 spring-boot-starter-web 和 spring-boot-starter-data-redis。没有 Controller。仓库总览写在根目录 README.md。
 
-首先我们在 pom.xml 中添加 redis 的依赖
+这份说明按当前源码静态整理，没有连接 Redis，也没有跑测试。
 
-```xml
-<dependency>
-    <groupId>org.springframework.boot</groupId>
-    <artifactId>spring-boot-starter-data-redis</artifactId>
-</dependency>
-```
+# 二、连接配置
 
-### 配置 Redis
+连接写在 src/main/resources/application.properties。
 
 ```properties
 spring.redis.host=localhost
@@ -27,172 +22,45 @@ spring.redis.lettuce.pool.min-idle=0
 spring.redis.lettuce.shutdown-timeout=100ms
 ```
 
-```Java
-@Configuration
-public class RedisConfig {
+host 是本机，端口 6379，使用 0 号库。timeout 的值 5000 按毫秒理解。Lettuce 池最大空闲和最大活跃都是 8，最小空闲是 0。max-wait 写成 -1ms，表示借连接时一直等到有连接为止。客户端关闭超时是 100 毫秒。
 
-    @Bean
-    public StringRedisTemplate stringRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        StringRedisTemplate stringRedisTemplate = new StringRedisTemplate();
-        stringRedisTemplate.setKeySerializer(new StringRedisSerializer());
-        stringRedisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        stringRedisTemplate.setConnectionFactory(redisConnectionFactory);
-        return stringRedisTemplate;
-    }
+# 三、两个模板
 
-    @Bean
-    public RedisTemplate<String, Serializable> redisTemplate(LettuceConnectionFactory connectionFactory) {
-        RedisTemplate<String, Serializable> redisTemplate = new RedisTemplate<>();
-        redisTemplate.setKeySerializer(new StringRedisSerializer());
-        redisTemplate.setHashKeySerializer(new StringRedisSerializer());
-        redisTemplate.setConnectionFactory(connectionFactory);
-        return redisTemplate;
-    }
+RedisConfig 注册两个 Bean。
 
-}
-```
+1. stringRedisTemplate 的类型是 StringRedisTemplate。key 和 hash key 使用 StringRedisSerializer。
+2. redisTemplate 的类型是 RedisTemplate<String, Serializable>。key 和 hash key 同样使用字符串序列化，value 使用模板默认的 JDK 序列化。
 
-### 访问 Redis 数据
+# 四、测试里的读写
 
-```Java
-@SpringBootTest
-public class ApplicationTests {
+测试类是 ApplicationTests。三个测试都要能连上上面配置的 Redis。
 
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
-    @Resource
-    private RedisTemplate<String, Object> redisTemplate;
+1. stringRedisTemplateTest 把键 MSG 写成 Hi，再读出来，要求两者相等。
+2. redisTemplateTest 向哈希 HMSG 写入字段 MSG、值 Hi，读出来转成字符串后再比较。测试字段声明成 RedisTemplate<String, Object>，@Resource 按字段名 redisTemplate 注入上面的同名 Bean。
+3. redisStreamTest 往流 MESSAGE_EVENT 追加一条字段 MSG、值 Hi 的消息。这个测试没有断言，也没有等待监听器处理。
 
-    @Test
-    public void stringRedisTemplateTest() {
-        stringRedisTemplate.opsForValue().set("MSG", "Hi");
-        String data = stringRedisTemplate.opsForValue().get("MSG");
-        Assertions.assertEquals(data, "Hi");
-    }
+# 五、Stream 怎么监听
 
-    @Test
-    public void redisTemplateTest() {
-        redisTemplate.opsForHash().put("HMSG", "MSG", "Hi");
-        Object data = redisTemplate.opsForHash().get("HMSG", "MSG");
-        Assertions.assertEquals(String.valueOf(data), "Hi");
-    }
+流的键和消费组写在 MessageEventListener 里。STREAM_KEY 是 MESSAGE_EVENT，STREAM_GROUP 是 MESSAGE_GROUP。
 
+RedisStreamConfig 在创建监听容器之前，先用 hasKey 看这条流在不在。键不在时做三步。
 
-}
-```
+1. 追加一条字段名和字段值都是空字符串的记录。
+2. 用只传入键和组名的 createGroup 创建消费组 MESSAGE_GROUP。Spring Data Redis 2.7 里，这个方法把组建在流的最新位置，所以这条占位记录不会进入待消费范围。
+3. 按记录编号删掉占位记录，并打一行创建日志。
 
-### 配置 Redis Stream
+键已经存在时，这段代码不会再建组。组如果已经被删掉、键还留着，启动后的监听会缺少消费组。
 
-```Java
-@Slf4j
-@Configuration
-public class RedisStreamConfig implements DisposableBean {
+监听容器的参数如下。
 
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
-    @Resource
-    private RedisConnectionFactory redisConnectionFactory;
+1. 线程池是 Executors.newFixedThreadPool(16)。
+2. 每批最多 10 条，轮询间隔 1 秒，序列化用 StringRedisSerializer。
+3. 出错时打日志“Redis stream error!”。
+4. 消费者名字是 DEFAULT_CONSUMER，组名是 MESSAGE_GROUP，偏移是 ReadOffset.lastConsumed()，从该组已消费位置之后继续读。
+5. 调用的是 receive。消息进入监听器之后，要由监听器自己确认。容器在 Bean 创建过程中就启动。
 
-    @Resource
-    private MessageEventListener messageEventListener;
+MessageEventListener 实现 StreamListener。onMessage 先打“Receive message:”，再调用 acknowledge，两个参数是 STREAM_KEY 和整条消息。
 
-    private Subscription subscription;
+Spring Data Redis 2.7 里，字符串加整条 Record 的这个重载，第一个参数是消费组名字，流的键从消息里取。这里传入的是 MESSAGE_EVENT。监听时加入的组是 MESSAGE_GROUP，两边不一致。MESSAGE_GROUP 里的待确认记录因此去不掉。这是按方法签名读出来的结论，没有连上 Redis 验证。
 
-    private StreamMessageListenerContainer<String, MapRecord<String, String, String>> listenerContainer;
-
-    @Bean
-    public StreamMessageListenerContainer<String, MapRecord<String, String, String>> listenerContainer() {
-
-        // 在定义 Stream Container 之前，需要先创建 Stream 和对应的 Group
-        if (Boolean.FALSE.equals(stringRedisTemplate.hasKey(MessageEventListener.STREAM_KEY))) {
-            RecordId recordId = stringRedisTemplate.opsForStream().add(MessageEventListener.STREAM_KEY, Collections.singletonMap("", ""));
-            stringRedisTemplate.opsForStream().createGroup(MessageEventListener.STREAM_KEY, MessageEventListener.STREAM_GROUP);
-            stringRedisTemplate.opsForStream().delete(MessageEventListener.STREAM_KEY, recordId);
-            log.info("Redis stream does not exist, create empty stream [{}] and stream group [{}]", MessageEventListener.STREAM_KEY, MessageEventListener.STREAM_GROUP);
-        }
-
-        // Stream Container 的配置
-        StreamMessageListenerContainer.StreamMessageListenerContainerOptions<String, MapRecord<String, String, String>> options =
-                StreamMessageListenerContainer.StreamMessageListenerContainerOptions.builder()
-                        // 定义线程池
-                        .executor(Executors.newFixedThreadPool(16))
-                        // 每次拉取的消息数量
-                        .batchSize(10)
-                        // 异常处理器
-                        .errorHandler(t -> log.error("Redis stream error!", t))
-                        // 每次拉取最新消息的时间间隔
-                        .pollTimeout(Duration.of(1000, ChronoUnit.MILLIS))
-                        .serializer(new StringRedisSerializer())
-                        .build();
-
-        listenerContainer = StreamMessageListenerContainer.create(redisConnectionFactory, options);
-
-        // 添加一个 Event Listener
-        subscription = listenerContainer.receive(
-                Consumer.from(MessageEventListener.STREAM_GROUP, "DEFAULT_CONSUMER"),
-                StreamOffset.create(MessageEventListener.STREAM_KEY, ReadOffset.lastConsumed()),
-                messageEventListener
-        );
-
-        // 启动监听容器
-        listenerContainer.start();
-
-        return listenerContainer;
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        // Spring 应用关闭前，需要先关闭容器和容器里面处于 Active 状态下的订阅
-        listenerContainer.stop(() -> {
-            try {
-                subscription.await(Duration.of(5000, ChronoUnit.MILLIS));
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
-        });
-    }
-
-}
-```
-
-添加一个用来接收 Redis Stream 的 Listener
-
-```Java
-@Slf4j
-@Component
-public class MessageEventListener implements StreamListener<String, MapRecord<String, String, String>> {
-
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
-
-    public static final String STREAM_KEY = "MESSAGE_EVENT";
-    public static final String STREAM_GROUP = "MESSAGE_GROUP";
-
-    @Override
-    public void onMessage(MapRecord<String, String, String> message) {
-        log.info("Receive message: {}", message);
-        stringRedisTemplate.opsForStream().acknowledge(STREAM_KEY, message);
-    }
-
-}
-```
-
-向 Redis Stream 发送消息
-
-```Java
-@SpringBootTest
-public class ApplicationTests {
-
-    @Resource
-    private StringRedisTemplate stringRedisTemplate;
-
-    @Test
-    public void redisStreamTest() {
-        Map<String, String> data = new HashMap<>();
-        data.put("MSG", "Hi");
-        MapRecord<String, String, String> record = MapRecord.create(MessageEventListener.STREAM_KEY, data);
-        stringRedisTemplate.opsForStream().add(record);
-    }
-    
-}
-```
+应用关闭时，RedisStreamConfig 实现了 DisposableBean。destroy 先停止监听容器，再最多等 5 秒让订阅结束。上面那个 16 线程的线程池没有配套的关闭调用。
